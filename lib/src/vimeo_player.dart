@@ -70,16 +70,17 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
     }
   }
 
-  @override
-  void deactivate() {
-    _videoPlayerController.pause();
-    super.deactivate();
-  }
+  // @override
+  // void deactivate() {
+  //   _videoPlayerController.pause();
+  //   super.deactivate();
+  // }
 
   @override
   void dispose() {
     /// disposing the controllers
     _flickManager.dispose();
+    _videoPlayerController.pause();
     _videoPlayerController.dispose();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values); // to re-show bars
