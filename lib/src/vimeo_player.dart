@@ -10,7 +10,7 @@ import 'model/vimeo_video_config.dart';
 class VimeoPlayerModel {
   /// vimeo video url
   final String url;
-
+  final Widget? loadingWedgit;
   /// hide/show device status-bar
   final List<SystemUiOverlay> systemUiOverlay;
 
@@ -19,6 +19,7 @@ class VimeoPlayerModel {
 
   VimeoPlayerModel({
     Key? key,
+    this.loadingWedgit,
     required this.url,
     this.systemUiOverlay = const [SystemUiOverlay.top, SystemUiOverlay.bottom],
     this.deviceOrientation = DeviceOrientation.portraitUp,
@@ -137,12 +138,7 @@ class _VimeoVideoPlayerState extends State<VimeoVideoPlayer> {
                   controls: FlickLandscapeControls(),
                 ),
               )
-            : const Center(
-                child: CircularProgressIndicator(
-                  color: Colors.grey,
-                  backgroundColor: Colors.white,
-                ),
-              ),
+            :widget.vimeoPlayerModel.loadingWedgit??Container()
       ),
     );
   }
